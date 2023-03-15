@@ -5,7 +5,9 @@ class Monkey
   public function __construct(
     public int $evenPointer,
     public int $oddPointer,
-    public array $coconuts
+    public array $coconuts = [],
+    public int $evens = 0,
+    public int $odds = 0,
   )
   {}
 }

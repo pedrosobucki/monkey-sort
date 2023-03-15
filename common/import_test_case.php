@@ -1,15 +1,49 @@
 <?php
 
-class Monkey
+abstract class Monkey
 {
   public function __construct(
     public int $evenPointer,
     public int $oddPointer,
-    public array $coconuts = [],
+  )
+  { }
+
+  abstract public function totalCoconuts(): int;
+}
+
+class CoconutMonkey extends Monkey
+{
+  public function __construct(
+    int $evenPointer,
+    int $oddPointer,
+    public array $coconuts,
+  )
+  {
+    parent::__construct($evenPointer, $oddPointer);
+  }
+
+  public function totalCoconuts(): int
+  {
+    return count($this->coconuts);
+  }
+}
+
+class EvenOddMonkey extends Monkey
+{
+  public function __construct(
+    int $evenPointer,
+    int $oddPointer,
     public int $evens = 0,
     public int $odds = 0,
   )
-  {}
+  {
+    parent::__construct($evenPointer, $oddPointer);
+  }
+
+  public function totalCoconuts(): int
+  {
+    return $this->evens + $this->odds;
+  }
 }
 
 class TestContent
@@ -50,8 +84,7 @@ function createMonkeyObject(string $row): Monkey
   $monkeyInfo = retrieveNumbersFromString($sections[0]);
   $coconuts = retrieveNumbersFromString($sections[2]);
 
-
-  return new Monkey((int)$monkeyInfo[1], (int)$monkeyInfo[2], $coconuts);
+  return new CoconutMonkey((int)$monkeyInfo[1], (int)$monkeyInfo[2], $coconuts);
 }
 
 function retrieveNumbersFromString(string $source): array

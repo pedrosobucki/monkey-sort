@@ -9,7 +9,7 @@ function printCompleteInfo(int $rounds, array $monkeys)
 
   for ($i = 0; $i < count($monkeys); $i++) {
 
-    if (count($monkeys[$i]->coconuts) > count($monkeys[$winner]->coconuts)) {
+    if ($monkeys[$i]->totalCoconuts() > $monkeys[$winner]->totalCoconuts()) {
       $winner = $i;
     }
 
@@ -31,12 +31,11 @@ function printResult(int $rounds, array $monkeys)
 
   for ($i = 0; $i < count($monkeys); $i++) {
 
-    if (count($monkeys[$i]->coconuts) > count($monkeys[$winner]->coconuts)) {
+    if ($monkeys[$i]->totalCoconuts() > $monkeys[$winner]->totalCoconuts()) {
       $winner = $i;
     }
 
-    $coconuts = count($monkeys[$i]->coconuts);
-    $monkeysInfo .= "Monkey {$i}: {$coconuts}\n";
+    $monkeysInfo .= "Monkey {$i}: {$monkeys[$i]->totalCoconuts()}\n";
   }
 
   $winnerInfo = "Winner: Monkey {$winner}";

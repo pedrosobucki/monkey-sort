@@ -3,6 +3,7 @@
 enum Sort:string
 {
   case Direct = 'direct';
+  case EvenOddCount = 'even_odd_count';
 
   public function number(): int
   {

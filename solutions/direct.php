@@ -2,7 +2,7 @@
 
 require_once "./common/print_helper.php";
 
-function sortData(int $rounds, array $monkeys): void
+function sortData(int $rounds, array &$monkeys): void
 {
   // iterates over all rounds
   for ($i = 0; $i < $rounds; $i++) {

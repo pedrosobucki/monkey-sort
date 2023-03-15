@@ -2,7 +2,7 @@
 
 require_once "./common/print_helper.php";
 
-function sortData(int $rounds, array $monkeys)
+function sortData(int $rounds, array &$monkeys)
 {
   printResult($rounds, $monkeys);
   $monkeys = countEvensAndOdds($monkeys);

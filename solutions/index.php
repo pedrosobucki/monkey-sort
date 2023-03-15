@@ -8,8 +8,6 @@ $testContent = import_request_variables();
 $rounds = $testContent->rounds;
 $monkeys = $testContent->monkeys;
 
-$rounds = 1;
-
 // iterates over all rounds
 for ($i = 0; $i < $rounds; $i++) {
 
@@ -18,13 +16,12 @@ for ($i = 0; $i < $rounds; $i++) {
 
     // stores current monkey
     $monkey = $monkeys[$j];
+    $coconutCount = count($monkey->coconuts);
 
     // iterates over monkeys's coconuts
-    for ($k = 0; $k < count($monkey->coconuts); $k++) {
+    for ($k = 0; $k < $coconutCount; $k++) {
 
       // stores current coconut
-      // var_dump("coconuts",count($monkey->coconuts));
-      // var_dump("index", $k);
       $coconut = $monkey->coconuts[$k];
 
       // action if coconut has even pebble number
@@ -41,12 +38,35 @@ for ($i = 0; $i < $rounds; $i++) {
         //removes coconut from current monkey
         unset($monkeys[$j]->coconuts[$k]);
       }
-
+      
     }
-
+    
+    // rearange array indexes
+    $monkeys[$j]->coconuts = array_values($monkeys[$j]->coconuts);
   }
+
+  printInfo($rounds, $monkeys);
 
 }
 
-// var_dump($monkeys);
-// die;
+function printInfo(int $rounds, array $monkeys)
+{
+  $roundInfo = "rounds: {$rounds}";
+
+  $winner = 0;
+  $monkeysInfo = "";
+
+  for ($i = 0; $i < count($monkeys); $i++) {
+
+    if (count($monkeys[$i]->coconuts) > count($monkeys[$winner]->coconuts)) {
+      $winner = $i;
+    }
+
+    $coconuts = implode(', ', $monkeys[$i]->coconuts);
+    $monkeysInfo .= "Monkey {$i}: {$coconuts}\n";
+  }
+
+  $winnerInfo = "Winner: Monkey {$winner}";
+
+  echo "{$roundInfo}\n\n{$monkeysInfo}\n{$winnerInfo}\n";
+}

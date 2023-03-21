@@ -4,12 +4,11 @@ enum Sort:string
 {
   case Direct = 'direct';
   case EvenOddCount = 'even_odd_count';
+  case PatterIdentification = 'pattern_identification';
 
   public function number(): int
   {
-    return match($this) {
-      self::Direct => 1
-    };
+    return array_search($this, self::cases()) + 1;
   }
 
   public static function validateFrom(string|int $value): self
@@ -35,17 +34,15 @@ enum Sort:string
 
   private static function validateFromInt(int $value): self
   {
-    $sort = match($value) {
-      self::Direct->number() => self::Direct,
+    $sorts = self::cases();
 
-      default => null
-    };
-
-    if ($sort === null) {
-      echo "\nrequested '{$value}' sort was not found!\n";
-      die;
+    for ($i=0; $i < count($sorts); $i++) {
+      if ($sorts[$i]->number() === $value) {
+        return $sorts[$i];
+      }
     }
 
-    return $sort;
+    echo "\nrequested '{$value}' sort was not found!\n";
+    die;
   }
 }

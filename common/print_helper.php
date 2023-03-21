@@ -56,6 +56,9 @@ function printDescending(array $monkeys): void
     }
   }
 
+  $remainingMonkeys = count($monkeysScore);
+  $monkeysInfo .= "Total remaining monkeys: {$remainingMonkeys}\n\n";
+  
   arsort($monkeysScore, SORT_NUMERIC);
 
   foreach ($monkeysScore as $i => $totalCoconuts) {

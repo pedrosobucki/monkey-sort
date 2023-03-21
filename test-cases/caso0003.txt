@@ -1,4 +1,4 @@
-Fazer 00002 rodadas
+Fazer 00005 rodadas
 Macaco 0 par -> 2 impar -> 1 : 5 : 23 15 2 42 1
 Macaco 1 par -> 0 impar -> 2 : 6 : 12 15 5 28 17 6
 Macaco 2 par -> 0 impar -> 1 : 4 : 2 28 46 54

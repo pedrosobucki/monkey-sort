@@ -2,6 +2,7 @@
 
 enum TestCase:int
 {
+  case Three = 3;
   case Fifty = 50;
   case Hundred = 100;
   case TwoHundred = 200;

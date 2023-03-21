@@ -4,7 +4,7 @@ require_once "./common/print_helper.php";
 
 function sortData(int $rounds, array &$monkeys)
 {
-  printResult($rounds, $monkeys);
+  // printResult($rounds, $monkeys);
   $monkeys = countEvensAndOdds($monkeys);
 
   // iterates over all rounds

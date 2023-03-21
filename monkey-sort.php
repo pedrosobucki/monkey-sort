@@ -10,7 +10,7 @@ if (!isset($argv[1])) {
 }
 
 if (!isset($argv[2]) || !is_numeric($argv[2])) {
-  echo "\nPlease select a test case:\n    - 50\n    - 100\n    - 200\n    - 400\n    - 600\n    - 800\n    - 900\n    - 1000\n\n\n";
+  echo "\nPlease select a test case:\n    -3\n    - 50\n    - 100\n    - 200\n    - 400\n    - 600\n    - 800\n    - 900\n    - 1000\n\n\n";
   die;
 }
 
@@ -30,7 +30,7 @@ $rounds = $testContent->rounds;
 $monkeys = $testContent->monkeys;
 
 $totalMonkeys = count($monkeys);
-echo "\n----------------------------------\nRunning with \n   {$rounds} rounds\n   '{$totalMonkeys} monkeys'\n----------------------------------\n\n";
+echo "\n----------------------------------\nRunning with \n   {$rounds} rounds\n   {$totalMonkeys} monkeys\n----------------------------------\n\n";
 
 sortData($rounds, $monkeys);
 

@@ -43,5 +43,5 @@ function sortData(int $rounds, array &$monkeys): void
 
     // printCompleteInfo($rounds, $monkeys);
   }
-  printResult($rounds, $monkeys);
+  // printResult($rounds, $monkeys);
 }

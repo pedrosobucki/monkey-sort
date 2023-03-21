@@ -34,4 +34,5 @@ echo "\n----------------------------------\nRunning with \n   {$rounds} rounds\n
 
 sortData($rounds, $monkeys);
 
-printResult($rounds, $monkeys);
+// printResult($rounds, $monkeys);
+printDescending($monkeys);

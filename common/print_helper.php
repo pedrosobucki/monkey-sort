@@ -1,6 +1,6 @@
 <?php
 
-function printCompleteInfo(int $rounds, array $monkeys)
+function printCompleteInfo(int $rounds, array $monkeys): void
 {
   $roundInfo = "rounds: {$rounds}";
 
@@ -22,7 +22,7 @@ function printCompleteInfo(int $rounds, array $monkeys)
   echo "{$roundInfo}\n\n{$monkeysInfo}\n{$winnerInfo}\n";
 }
 
-function printResult(int $rounds, array $monkeys)
+function printResult(int $rounds, array $monkeys): void
 {
   $roundInfo = "rounds: {$rounds}";
 
@@ -41,4 +41,26 @@ function printResult(int $rounds, array $monkeys)
   $winnerInfo = "Winner: Monkey {$winner}";
 
   echo "{$roundInfo}\n\n{$monkeysInfo}\n{$winnerInfo}\n";
+}
+
+function printDescending(array $monkeys): void
+{
+  $monkeysInfo = "";
+  $monkeysScore = [];
+
+  for ($i = 0; $i < count($monkeys); $i++) {
+    $totalCoconuts = $monkeys[$i]->totalCoconuts();
+
+    if ($totalCoconuts > 0) {
+      $monkeysScore[$i] = $totalCoconuts;
+    }
+  }
+
+  arsort($monkeysScore, SORT_NUMERIC);
+
+  foreach ($monkeysScore as $i => $totalCoconuts) {
+    $monkeysInfo .= "Monkey {$i}: {$totalCoconuts}\n";
+  }
+
+  echo "{$monkeysInfo}\n";
 }

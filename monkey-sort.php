@@ -3,14 +3,15 @@
 
 require_once "./common/Sort.php";
 require_once "./common/TestCase.php";
+require_once "./common/print_helper.php";
 
 if (!isset($argv[1])) {
-  echo "\nPlease select a sort type by number or name:\n    1. direct\n\n";
+  printSortOptions();
   die;
 }
 
 if (!isset($argv[2]) || !is_numeric($argv[2])) {
-  echo "\nPlease select a test case:\n    -3\n    - 50\n    - 100\n    - 200\n    - 400\n    - 600\n    - 800\n    - 900\n    - 1000\n\n\n";
+  printTestCaseOptions();
   die;
 }
 

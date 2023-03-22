@@ -1,5 +1,26 @@
 <?php
 
+require_once "./common/Sort.php";
+require_once "./common/TestCase.php";
+
+function printSortOptions(): void
+{
+  echo "\nPlease select a sort type by number or name:\n";
+  foreach (Sort::cases() as $sort) { 
+    echo "    {$sort->number()}. {$sort->value}\n";
+  }
+  echo "\n";
+}
+
+function printTestCaseOptions(): void
+{
+  echo "\nPlease select a test case:\n";
+  foreach (TestCase::cases() as $testCase) { 
+    echo "    -{$testCase->value}\n";
+  }
+  echo "\n\n";
+}
+
 function printCompleteInfo(int $rounds, array $monkeys): void
 {
   $roundInfo = "rounds: {$rounds}";

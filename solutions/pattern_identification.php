@@ -68,17 +68,29 @@ function sortMonkeysWithMostCoconuts(array $monkeys): array
 
 function retrieveFinalMonkeyHierarchy(int $rounds, int $patternStart, int $patternEnd, array &$hierarchyList): array
 {
+  echo "pattern start position: {$patternStart}\n";
+  echo "pattern end position: {$patternEnd}\n";
+
   // excludes rounds before pattern start
-  $remainingRounds = $rounds - ($patternStart - 1);
+  $remainingRounds = $rounds - ($patternStart);
+
+  echo "remaining rounds: {$remainingRounds}\n";
 
   // gets mod between remaining rounds and patter size
-  $mod = $remainingRounds % ($patternEnd - $patternStart);
+  $mod = $remainingRounds % ($patternEnd - $patternStart + 1);
+
+  echo "pattern size: ".($patternEnd - $patternStart + 1)."\n";
+  echo "mod: ".($mod)."\n";
 
   // finds round with desired hierarchy
-  $targetHierarchy = $mod + $patternStart;
+  $targetHierarchy = $mod + $patternStart - 1;
+
+  echo "target round: {$targetHierarchy}";
 
   // retrieves hierarchy corresponding to desired rounds 
   $finalHierarchy = $hierarchyList[$targetHierarchy];
+
+  echo "\n";
 
   return $finalHierarchy;
 }

@@ -88,3 +88,11 @@ function printDescending(array $monkeys): void
 
   echo "{$monkeysInfo}\n";
 }
+
+function printMonkeyHierarchy(array $sortedMonkeyHierarchy): void
+{
+  $monkeysInfo = "Winner: Monkey {$sortedMonkeyHierarchy[0]}\n\n";
+  $monkeysInfo .= "Order:\n Monkey " . implode("\n Monkey ", $sortedMonkeyHierarchy);
+
+  echo "{$monkeysInfo}\n\n";
+}

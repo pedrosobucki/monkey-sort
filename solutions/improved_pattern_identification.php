@@ -27,14 +27,10 @@ function sortData(int $rounds, array &$monkeys)
 
     }
 
-    // stores monkey hierarchy for current round iteration 
     $monkeysWithCoconuts = mapCoconutCount($monkeys);
     $currentRoundMonkeyCount = count($monkeysWithCoconuts);
 
     $roundWinner = array_search(max($monkeysWithCoconuts),$monkeysWithCoconuts);
-    echo "round {$i} winner: {$roundWinner}\n";
-
-    var_dump($roundWinners);
 
     if ($currentRoundMonkeyCount < $lastRoundMonkeyCount) {
 
@@ -49,11 +45,8 @@ function sortData(int $rounds, array &$monkeys)
       $roundWinners = [$roundWinners[$patternStart]];
     }
 
-    echo "pattern start: {$patternStart}\n";
     $roundWinner = array_search(max($monkeysWithCoconuts),$monkeysWithCoconuts);
     $patternExists = array_search($roundWinner, $roundWinners);
-
-    echo "pattern exists: {$patternExists}\n";
     
     if ($patternExists !== false) {
       $winnerMonkey = retrieveWinnerMonkey($rounds, $patternStart, $roundWinners);
@@ -79,11 +72,11 @@ function retrieveWinnerMonkey(int $rounds, int $patternStart, array &$roundWinne
   echo "remaining rounds: {$remainingRounds}\n";
 
   // gets mod between remaining rounds and patter size
-  $mod = $remainingRounds % $patternSize;
+  $mod = ($remainingRounds - 1) % $patternSize;
   echo "mod: {$mod}\n";
 
   // retrieves hierarchy corresponding to desired rounds 
-  $finalWinner = $roundWinners[$mod - 1];
+  $finalWinner = $roundWinners[$mod];
 
   echo "\n";
   return $finalWinner;

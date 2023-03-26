@@ -25,7 +25,8 @@ function sortData(int $rounds, array &$monkeys)
     }
 
     // stores monkey hierarchy for current round iteration 
-    $roundHierarchy = sortMonkeysWithMostCoconuts($monkeys);
+    $monkeysScore = mapCoconutCount($monkeys);
+    $roundHierarchy = sortMonkeysWithMostCoconuts($monkeysScore);
 
     // returns index of pattern start if current round hierarchy has already occured
     $patternStart = array_search($roundHierarchy, $roundHierarchyList);
@@ -43,24 +44,6 @@ function sortData(int $rounds, array &$monkeys)
     $roundHierarchyList[] = $roundHierarchy;
   }
 
-}
-
-function sortMonkeysWithMostCoconuts(array $monkeys): array
-{
-  // stores coconut count for monkeys with more than 0 coconuts total
-  for ($i = 0; $i < count($monkeys); $i++) {
-    $totalCoconuts = $monkeys[$i]->totalCoconuts();
-
-    if ($totalCoconuts > 0) {
-      $monkeysScore[$i] = $totalCoconuts;
-    }
-  }
-  
-  // sorts monkeys from most to least coconuts
-  arsort($monkeysScore, SORT_NUMERIC);
-
-  // returns list with ordered monkeys
-  return array_keys($monkeysScore);
 }
 
 function retrieveFinalMonkeyHierarchy(int $rounds, int $patternStart, int $patternEnd, array &$hierarchyList): array

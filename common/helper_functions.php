@@ -40,3 +40,26 @@ function sendOdds(array $monkeys, int $giving)
   $monkeys[$monkeys[$giving]->oddPointer]->odds += $monkeys[$giving]->odds;
   $monkeys[$giving]->odds = 0;
 }
+
+function mapCoconutCount(array $monkeys): array
+{
+  // stores coconut count for monkeys with more than 0 coconuts total
+  for ($i = 0; $i < count($monkeys); $i++) {
+    $totalCoconuts = $monkeys[$i]->totalCoconuts();
+
+    if ($totalCoconuts > 0) {
+      $monkeysScore[$i] = $totalCoconuts;
+    }
+  }
+
+  return $monkeysScore;
+}
+
+function sortMonkeysWithMostCoconuts(array $monkeysScore): array
+{ 
+  // sorts monkeys from most to least coconuts
+  arsort($monkeysScore, SORT_NUMERIC);
+
+  // returns list with ordered monkeys
+  return array_keys($monkeysScore);
+}

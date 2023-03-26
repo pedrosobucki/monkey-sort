@@ -5,6 +5,7 @@ enum Sort:string
   case Direct = 'direct';
   case EvenOddCount = 'even_odd_count';
   case PatterIdentification = 'pattern_identification';
+  case ImprovedPatterIdentification = 'improved_pattern_identification';
 
   public function number(): int
   {

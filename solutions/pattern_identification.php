@@ -32,12 +32,9 @@ function sortData(int $rounds, array &$monkeys)
 
     // checks if a pattern was found
     if ($patternStart !== false) {
-
-      // pattern ending index is equal to previous round
-      $patternEnd = $i-1;
       
       // finds hierarchy corresponding to desired rounds 
-      $finalHierarchy = retrieveFinalMonkeyHierarchy($rounds, $patternStart, $patternEnd, $roundHierarchyList);
+      $finalHierarchy = retrieveFinalMonkeyHierarchy($rounds, $patternStart, $i, $roundHierarchyList);
 
       printMonkeyHierarchy($finalHierarchy);
       die;
@@ -77,9 +74,9 @@ function retrieveFinalMonkeyHierarchy(int $rounds, int $patternStart, int $patte
   echo "remaining rounds: {$remainingRounds}\n";
 
   // gets mod between remaining rounds and patter size
-  $mod = $remainingRounds % ($patternEnd - $patternStart + 1);
+  $mod = $remainingRounds % ($patternEnd - $patternStart);
 
-  echo "pattern size: ".($patternEnd - $patternStart + 1)."\n";
+  echo "pattern size: ".($patternEnd - $patternStart)."\n";
   echo "mod: ".($mod)."\n";
 
   // finds round with desired hierarchy

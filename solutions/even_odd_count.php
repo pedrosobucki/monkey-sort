@@ -21,10 +21,7 @@ function sortData(int $rounds, array &$monkeys)
 
     }
 
-    printDescending($monkeys);
-    if ($i === 26) {
-      die;
-    }
+    // printDescending($monkeys);
   }
 
 }

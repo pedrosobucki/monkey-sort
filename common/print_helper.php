@@ -64,6 +64,21 @@ function printResult(int $rounds, array $monkeys): void
   echo "{$roundInfo}\n\n{$monkeysInfo}\n{$winnerInfo}\n";
 }
 
+function printWinner(array $monkeys): void
+{
+  $winner = 0;
+
+  for ($i = 0; $i < count($monkeys); $i++) {
+    if ($monkeys[$i]->totalCoconuts() > $monkeys[$winner]->totalCoconuts()) {
+      $winner = $i;
+    }
+  }
+
+  $winnerInfo = "Winner: Monkey {$winner}";
+
+  echo "{$winnerInfo}\n";
+}
+
 function printDescending(array $monkeys): void
 {
   $monkeysInfo = "";

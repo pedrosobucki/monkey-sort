@@ -79,23 +79,23 @@ function sortData(int $rounds, array &$monkeys)
 
 function retrieveWinnerMonkey(int $rounds, int $patternStart, array &$roundWinners): int
 {
-  echo "pattern start position: {$patternStart}\n";
+  // echo "pattern start position: {$patternStart}\n";
 
   // calculates pattern size
   $patternSize = count($roundWinners);
-  echo "pattern size: {$patternSize}\n";
+  // echo "pattern size: {$patternSize}\n";
 
   // excludes total rounds before pattern start
   $remainingRounds = $rounds - ($patternStart);
-  echo "remaining rounds: {$remainingRounds}\n";
+  // echo "remaining rounds: {$remainingRounds}\n";
 
   // gets mod between remaining rounds and patter size
   $mod = ($remainingRounds - 1) % $patternSize;
-  echo "mod: {$mod}\n";
+  // echo "mod: {$mod}\n";
 
   // winner monkey from pattern position 
   $finalWinner = $roundWinners[$mod];
-  echo "\n";
+  // echo "\n";
   
   return $finalWinner;
 }

@@ -37,7 +37,8 @@ function sortData(int $rounds, array &$monkeys)
       // finds hierarchy corresponding to desired rounds 
       $finalHierarchy = retrieveFinalMonkeyHierarchy($rounds, $patternStart, $i, $roundHierarchyList);
 
-      printMonkeyHierarchy($finalHierarchy);
+      // printMonkeyHierarchy($finalHierarchy);
+      echo "Winner: Monkey {$finalHierarchy[0]}\n";
       die;
     }
 
@@ -48,29 +49,29 @@ function sortData(int $rounds, array &$monkeys)
 
 function retrieveFinalMonkeyHierarchy(int $rounds, int $patternStart, int $patternEnd, array &$hierarchyList): array
 {
-  echo "pattern start position: {$patternStart}\n";
-  echo "pattern end position: {$patternEnd}\n";
+  // echo "pattern start position: {$patternStart}\n";
+  // echo "pattern end position: {$patternEnd}\n";
 
   // excludes rounds before pattern start
   $remainingRounds = $rounds - ($patternStart);
 
-  echo "remaining rounds: {$remainingRounds}\n";
+  // echo "remaining rounds: {$remainingRounds}\n";
 
   // gets mod between remaining rounds and patter size
   $mod = $remainingRounds % ($patternEnd - $patternStart);
 
-  echo "pattern size: ".($patternEnd - $patternStart)."\n";
-  echo "mod: ".($mod)."\n";
+  // echo "pattern size: ".($patternEnd - $patternStart)."\n";
+  // echo "mod: ".($mod)."\n";
 
   // finds round with desired hierarchy
   $targetHierarchy = $mod + $patternStart - 1;
 
-  echo "target round: {$targetHierarchy}";
+  // echo "target round: {$targetHierarchy}";
 
   // retrieves hierarchy corresponding to desired rounds 
   $finalHierarchy = $hierarchyList[$targetHierarchy];
 
-  echo "\n";
+  // echo "\n";
 
   return $finalHierarchy;
 }

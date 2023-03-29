@@ -8,9 +8,6 @@ function sortData(int $rounds, array &$monkeys)
   // variable for storing monkey hierarchy (most to least coconuts) every round iteration
   $roundHierarchyList = [];
 
-  // stores only even/odd count for each monkey
-  $monkeys = countEvensAndOdds($monkeys);
-
   // iterates over all rounds
   for ($i = 0; $i < $rounds; $i++) {
 

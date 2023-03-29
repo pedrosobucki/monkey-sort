@@ -5,9 +5,6 @@ require_once "./common/helper_functions.php";
 
 function sortData(int $rounds, array &$monkeys)
 {
-  // printResult($rounds, $monkeys);
-  $monkeys = countEvensAndOdds($monkeys);
-
   // iterates over all rounds
   for ($i = 0; $i < $rounds; $i++) {
 
@@ -21,7 +18,6 @@ function sortData(int $rounds, array &$monkeys)
 
     }
 
-    // printDescending($monkeys);
   }
 
 }

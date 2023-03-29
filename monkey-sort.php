@@ -21,11 +21,11 @@ $testCase = TestCase::validateFrom((int)$argv[2]);
 echo "\n----------------------------------\nSelected \n   sort:'{$sort->value}'\n   test case:'{$testCase->value}'\n----------------------------------\n\n";
 
 require_once "./solutions/{$sort->value}.php";
-require_once "./common/import_test_case.php";
+require_once "./common/import/import_test_case.php";
 require_once "./common/print_helper.php";
 
 // retrieves test data from file
-$testContent = import_request_variables($testCase->value);
+$testContent = import_request_variables($sort->monkeyType(), $testCase->value);
 
 $rounds = $testContent->rounds;
 $monkeys = $testContent->monkeys;

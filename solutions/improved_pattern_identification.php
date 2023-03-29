@@ -11,9 +11,6 @@ function sortData(int $rounds, array &$monkeys)
   $lastRoundMonkeyCount = INF;
   $patternStart = -1;
 
-  // stores only even/odd count for each monkey
-  $monkeys = countEvensAndOdds($monkeys);
-
   // iterates over all rounds
   for ($i = 0; $i < $rounds; $i++) {
 

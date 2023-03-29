@@ -1,5 +1,8 @@
 <?php
 
+require_once("Model/CoconutMonkey.php");
+require_once("Model/EvenOddMonkey.php");
+
 enum Sort:string
 {
   case Direct = 'direct';
@@ -10,6 +13,15 @@ enum Sort:string
   public function number(): int
   {
     return array_search($this, self::cases()) + 1;
+  }
+
+  public function monkeyType(): string
+  {
+    if ($this === self::Direct) {
+      return CoconutMonkey::class;
+    }
+
+    return EvenOddMonkey::class;
   }
 
   public static function validateFrom(string|int $value): self

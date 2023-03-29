@@ -55,13 +55,13 @@ function retrieveFinalMonkeyHierarchy(int $rounds, int $patternStart, int $patte
   // echo "remaining rounds: {$remainingRounds}\n";
 
   // gets mod between remaining rounds and patter size
-  $mod = $remainingRounds % ($patternEnd - $patternStart);
+  $mod = ($remainingRounds - 1) % ($patternEnd - $patternStart);
 
   // echo "pattern size: ".($patternEnd - $patternStart)."\n";
   // echo "mod: ".($mod)."\n";
 
   // finds round with desired hierarchy
-  $targetHierarchy = $mod + $patternStart - 1;
+  $targetHierarchy = $mod + $patternStart;
 
   // echo "target round: {$targetHierarchy}";
 

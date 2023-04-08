@@ -15,7 +15,7 @@ function sortData(int $rounds, array &$monkeys): void
       $coconutCount = count($monkey->coconuts);
 
       // iterates over monkeys's coconuts
-      for ($k = 0; $k < $coconutCount; $k++) {
+      for ($k = $coconutCount - 1; $k >= 0; $k--) {
 
         // stores current coconut
         $coconut = $monkey->coconuts[$k];
@@ -24,17 +24,15 @@ function sortData(int $rounds, array &$monkeys): void
         if ($coconut % 2 === 0) {
           // sends coconut to monkey
           $monkeys[$monkey->evenPointer]->coconuts[] = $coconut;
-          //removes coconut from current monkey
-          unset($monkeys[$j]->coconuts[$k]);
         } 
         // action if coconut has odd pebble number
         else {
           // sends coconut to monkey
           $monkeys[$monkey->oddPointer]->coconuts[] = $coconut;
-          //removes coconut from current monkey
-          unset($monkeys[$j]->coconuts[$k]);
         }
         
+        //removes coconut from current monkey
+        unset($monkeys[$j]->coconuts[$k]);
       }
       
       // rearange array indexes

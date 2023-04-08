@@ -14,10 +14,13 @@ function sortData(int $rounds, array &$monkeys)
     // iterates over all monkeys
     for ($j = 0; $j < count($monkeys); $j++) {
 
-      // sends even numbers to target monkey and resets current monkey even count
-      sendEvens($monkeys, $j);
-      // sends odd numbers to target monkey and resets current monkey odd count
-      sendOdds($monkeys, $j);
+      // // sends even numbers to target monkey and resets current monkey even count
+      $monkeys[$monkeys[$j]->evenPointer]->evens += $monkeys[$j]->evens;
+      $monkeys[$j]->evens = 0;
+      
+      // // sends odd numbers to target monkey and resets current monkey odd count
+      $monkeys[$monkeys[$j]->oddPointer]->odds += $monkeys[$j]->odds;
+      $monkeys[$j]->odds = 0;
 
     }
 
@@ -34,7 +37,7 @@ function sortData(int $rounds, array &$monkeys)
       // finds hierarchy corresponding to desired rounds 
       $finalHierarchy = retrieveFinalMonkeyHierarchy($rounds, $patternStart, $i, $roundHierarchyList);
 
-      // printMonkeyHierarchy($finalHierarchy);
+      printMonkeyHierarchy($finalHierarchy);
       echo "Winner: Monkey {$finalHierarchy[0]}\n";
       die;
     }
@@ -46,29 +49,29 @@ function sortData(int $rounds, array &$monkeys)
 
 function retrieveFinalMonkeyHierarchy(int $rounds, int $patternStart, int $patternEnd, array &$hierarchyList): array
 {
-  // echo "pattern start position: {$patternStart}\n";
-  // echo "pattern end position: {$patternEnd}\n";
+  echo "pattern start position: {$patternStart}\n";
+  echo "pattern end position: {$patternEnd}\n";
 
   // excludes rounds before pattern start
   $remainingRounds = $rounds - ($patternStart);
 
-  // echo "remaining rounds: {$remainingRounds}\n";
+  echo "remaining rounds: {$remainingRounds}\n";
 
   // gets mod between remaining rounds and patter size
   $mod = ($remainingRounds - 1) % ($patternEnd - $patternStart);
 
-  // echo "pattern size: ".($patternEnd - $patternStart)."\n";
-  // echo "mod: ".($mod)."\n";
+  echo "pattern size: ".($patternEnd - $patternStart)."\n";
+  echo "mod: ".($mod)."\n";
 
   // finds round with desired hierarchy
   $targetHierarchy = $mod + $patternStart;
 
-  // echo "target round: {$targetHierarchy}";
+  echo "target round: {$targetHierarchy}";
 
   // retrieves hierarchy corresponding to desired rounds 
   $finalHierarchy = $hierarchyList[$targetHierarchy];
 
-  // echo "\n";
+  echo "\n";
 
   return $finalHierarchy;
 }

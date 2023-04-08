@@ -29,18 +29,6 @@ function countEvensAndOdds(array $monkeys): array
   return $countedMonkeys;
 }
 
-function sendEvens(array $monkeys, int $giving)
-{
-  $monkeys[$monkeys[$giving]->evenPointer]->evens += $monkeys[$giving]->evens;
-  $monkeys[$giving]->evens = 0;
-}
-
-function sendOdds(array $monkeys, int $giving)
-{
-  $monkeys[$monkeys[$giving]->oddPointer]->odds += $monkeys[$giving]->odds;
-  $monkeys[$giving]->odds = 0;
-}
-
 function mapCoconutCount(array $monkeys): array
 {
   // stores coconut count for monkeys with more than 0 coconuts total

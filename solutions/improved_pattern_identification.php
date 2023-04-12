@@ -45,16 +45,9 @@ function sortData(int $rounds, array &$monkeys)
       $patternStart++;
 
       // sotres current round winner in array
-      $roundWinners[] = $roundWinner;
+      $roundWinners = [$roundWinner];
 
       continue;
-    }
-
-    // if last and current round quantity of monkeys with more than 1 coconut are equal
-    // AND this is the round right after the pattern has started:
-    if ($i === $patternStart + 1) {
-      // leaves only 'pattern start' round winner monkeys in pattern list
-      $roundWinners = [$roundWinners[$patternStart]];
     }
 
     // checks if current round winner has already appeared in pattern (found the end of the pattern)
